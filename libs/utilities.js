@@ -6,15 +6,18 @@ function DoIKick(){
     testinbase[2] = 'l';
     testinbase[3] = 'o';
 
-alert("Ishouldkickright?: " + JIMS_B256arraytoHex(testinbase, 4) + " " + JIMS_HextoB256array("61616161"));
+console.log("Ishouldkickright?: " + JIMS_B256arraytoHex(testinbase, 4) + " " + JIMS_HextoB256array("61616161"));
 
 //just curious
-alert("should not be visible: " + hextoval('5'));
+console.log("should not be visible: " + hextoval('5'));
 
 }
 
 /* |><><>| 3a) Hex to val |><><|
 Want to create a method for handling data conversion from different bases
+
+Ishouldkickright?: 00000000 1,1,1,1
+
 */
 
 //Gives back a string, expects an array as input
@@ -29,9 +32,17 @@ function JIMS_B256arraytoHex(datain, datalen, uppercase=true){
         lookup[14] = 'e';
         lookup[15] = 'f';
     }
-    for (let i=0; i < datalen; ++i){
-        output += lookup[((datain[i] >> 4) & 0x0f)];
-        output += lookup[(datain[i] & 0x0f)];
+    let i=0;
+    if (typeof datain == "string"){ //might as well support string
+        while (i < datalen){
+            output += lookup[((datain.charAt(i++) >> 4) & 0x0f)];
+            output += lookup[(datain.charAt(i++) & 0x0f)];
+        }
+    } else { //array
+        while (i < datalen){
+            output += lookup[((datain[i++] >> 4) & 0x0f)];
+            output += lookup[(datain[i++] & 0x0f)];
+        }
     }
     return output;
 }
