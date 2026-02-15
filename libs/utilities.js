@@ -66,6 +66,8 @@ function JIMS_HextoB256array(datain){
         }
   }
 
+  console.log(typeof datain);
+
   alert(datain.chartAt(5));
 
 
