@@ -65,15 +65,9 @@ function JIMS_HextoB256array(datain){
             default: return 0;
         }
   }
-
-  console.log(typeof datain);
-
-  alert(datain.chartAt(5));
-
-
     let output = new Uint8Array(datalength >> 1);
-  //  for (let i=0; i != (datalength >> 1); ++i){
-  //      output[i] = (hextoval(datain.chartAt(i << 1) << 4) | (hextoval(datain.chartAt((i<<1)+1))));
-  //  }
+    for (let i=0; i != (datalength >> 1); ++i){
+        output[i] = (hextoval(datain.charAt(i << 1) << 4) | (hextoval(datain.charAt((i<<1)+1))));
+    }
     return output;
 }
