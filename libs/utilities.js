@@ -20,10 +20,14 @@ Want to create a method for handling data conversion from different bases
 //Gives back a string, expects an array as input
 function JIMS_B256arraytoHex(datain, datalen, uppercase=true){
     let output = "";
-    if (uppercase == true){
-        const lookup = ['0','1', '2', '3', '4', '5', '6','7','8','9','A','B','C','D','E','F'];
-    } else {
-        const lookup = ['0','1', '2', '3', '4', '5', '6','7','8','9','a','b','c','d','e','f'];
+    let lookup = ['0','1', '2', '3', '4', '5', '6','7','8','9','A','B','C','D','E','F'];
+    if (uppercase == false){
+        lookup[10] = 'a';
+        lookup[11] = 'b';
+        lookup[12] = 'c';
+        lookup[13] = 'd';
+        lookup[14] = 'e';
+        lookup[15] = 'f';
     }
     for (let i=0; i < datalen; ++i){
         output += lookup[((datain[i] >> 4) & 0x0f)];
