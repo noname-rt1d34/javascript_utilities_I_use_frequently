@@ -38,7 +38,7 @@ function JIMS_B256arraytoHex(datain, datalen, uppercase=true){
 
 //hex string to base256 uint8array, does not need to give length
 function JIMS_HextoB256array(datain){
-    let datalength = datain.length();
+    let datalength = datain.length;
     if ((datalength & 1) != 0){//uneven input, add a leading 0 to input
         datain = '0' + datain; //This is ok since datain is a string
         datalength++;
