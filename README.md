@@ -1,5 +1,17 @@
 This is a pretty simple javascript (and might migrate to C).
 
+Updated after mucking around with javascript for awhile:
+
+Well I just discovered that since roughly 2020 allot of these operations are no longer requiring their own javascript file, if I have issues with projects I might add to this over time.
+
+For example: https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto
+This is an in browser crptographic operations suite, it does seem to be lacking things like decompress an p256 compressed public key (0x02|0x03 + 32byte public X key) format back into Y and X for the full public key though.
+I also don't know how robust the storage for the private key is, since it's still in javascript I feel the "code" can still be modified pretty easily to just export it... I guess that goes into plugin land though and javascript is not really designed that way.
+
+Maybe I might make these operations into WASM?
+
+|><><><| Original plan |><><><|
+
 Link to "live tool doing the things": https://noname-rt1d34.github.io/javascript_utilities_I_use_frequently/
 
 Going to use the convention "JIMS_" to differentiate this lib from other libs
